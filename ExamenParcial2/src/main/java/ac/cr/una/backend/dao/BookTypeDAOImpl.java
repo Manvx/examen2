@@ -30,13 +30,18 @@ public class BookTypeDAOImpl implements BookTypeDAO{
     public boolean deleteAll() {
          List<BookType> bookTypeList = new ArrayList<>();
         boolean isDeleted = false;
-        BookType bookType = null;
-
+        
         session.beginTransaction();
         bookTypeList = session.createCriteria(BookType.class).list();      
-        session.delete(bookTypeList);
+        int var = bookTypeList.size();
+        
+        for(int m = 0; m > var; m++){
+            session.delete(bookTypeList.get(m));
+            session.getTransaction().commit();
+        }
+
         isDeleted = true;
-        session.getTransaction().commit();
+        
 
         return isDeleted;
     }
