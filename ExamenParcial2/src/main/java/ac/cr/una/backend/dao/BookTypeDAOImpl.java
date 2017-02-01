@@ -1,3 +1,5 @@
+package ac.cr.una.backend.dao;
+
 
 import ac.cr.una.backend.dao.BookTypeDAO;
 import ac.cr.una.backend.dao.HibernateUtil;
