@@ -2,6 +2,9 @@
 import ac.cr.una.backend.dao.BookTypeDAO;
 import ac.cr.una.backend.dao.HibernateUtil;
 import ac.cr.una.backend.model.BookType;
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /*
@@ -19,17 +22,39 @@ public class BookTypeDAOImpl implements BookTypeDAO{
 
     @Override
     public boolean deleteAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         List<BookType> bookTypeList = new ArrayList<>();
+        boolean isDeleted = false;
+        BookType bookType = null;
+
+        session.beginTransaction();
+        bookTypeList = session.createCriteria(BookType.class).list();      
+        session.delete(bookTypeList);
+        isDeleted = true;
+        session.getTransaction().commit();
+
+        return isDeleted;
     }
 
     @Override
     public BookType save(BookType bookType) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session.beginTransaction();
+        session.save(bookType);
+        session.getTransaction().commit();
+
+        return bookType;
     }
 
     @Override
     public BookType findByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BookType bookType = null;
+        Query query = session.createQuery("from BookType where nombre = :nombre ");
+        query.setParameter("nombre", name);
+
+        if (query.list().size() > 0) {
+            bookType = (BookType) query.list().get(0);
+        }
+
+        return bookType;
     }
     
 }

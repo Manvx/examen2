@@ -19,8 +19,8 @@ public class AuthorDaoImpl implements AuthorDAO{
     @Override
     public Author findByName(String name) {
         Author author = null;
-        Query query = session.createQuery("from Student where name = :name ");
-        query.setParameter("name", name);
+        Query query = session.createQuery("from Author where nombre = :nombre ");
+        query.setParameter("nombre", name);
 
         if (query.list().size() > 0) {
             author = (Author) query.list().get(0);
