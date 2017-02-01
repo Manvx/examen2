@@ -5,8 +5,7 @@
  */
 package ac.cr.una.backend.dao;
 
-import ac.cr.una.backend.model.AuthorContact;
-import ac.cr.una.backend.model.AuthorContact;
+import ac.cr.una.backend.model.Book;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -15,7 +14,7 @@ import org.hibernate.Session;
  *
  * @author Alejandro
  */
-public class AuthorContactDAOImpl implements AuthorContactDAO {
+public class BookDAOImpl implements BookDAO{
     private final Session session = HibernateUtil.getSessionFactory().openSession();
 
     /**
@@ -24,18 +23,18 @@ public class AuthorContactDAOImpl implements AuthorContactDAO {
      */
     @Override
     public boolean deleteAll() {
-        List<AuthorContact> authorContactList = new ArrayList<>();
+        List<Book> bookList = new ArrayList<>();
         boolean isDeleted = false;
-        
+ 
         session.beginTransaction();
-        authorContactList = session.createCriteria(AuthorContact.class).list(); 
-        int var = authorContactList.size();        
+        bookList = session.createCriteria(Book.class).list();      
+        int var = bookList.size();
         for(int m = 0; m < var; m++){
-            session.delete(authorContactList.get(m));
+            session.delete(bookList.get(m));
             session.getTransaction().commit();
         }
 
-         isDeleted = true;    
+        isDeleted = true;
         
 
         return isDeleted;
@@ -43,16 +42,16 @@ public class AuthorContactDAOImpl implements AuthorContactDAO {
 
     /**
      *
-     * @param authorContact
+     * @param book
      * @return
      */
     @Override
-    public AuthorContact save(AuthorContact authorContact) {
+    public Book save(Book book) {
         session.beginTransaction();
-        session.save(authorContact);
+        session.save(book);
         session.getTransaction().commit();
 
-        return authorContact;
+        return book;
     }
 
     /**
@@ -60,13 +59,12 @@ public class AuthorContactDAOImpl implements AuthorContactDAO {
      * @return
      */
     @Override
-    public List<AuthorContact> findAll() {
-        List<AuthorContact> authorContactList = new ArrayList<>();
+    public List<Book> findAll() {
+        List<Book> bookList = new ArrayList<>();
 
-        authorContactList = session.createCriteria(AuthorContact.class).list();
+        bookList = session.createCriteria(Book.class).list();
 
-        return authorContactList;
+        return bookList;
     }
-        
     
 }

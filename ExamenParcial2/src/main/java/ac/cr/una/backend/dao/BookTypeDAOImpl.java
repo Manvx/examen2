@@ -35,7 +35,7 @@ public class BookTypeDAOImpl implements BookTypeDAO{
         bookTypeList = session.createCriteria(BookType.class).list();      
         int var = bookTypeList.size();
         
-        for(int m = 0; m > var; m++){
+        for(int m = 0; m < var; m++){
             session.delete(bookTypeList.get(m));
             session.getTransaction().commit();
         }
