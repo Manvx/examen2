@@ -21,11 +21,19 @@ public class HibernateUtil {
         return new AnnotationConfiguration().configure().buildSessionFactory();
 
     }
-     public static SessionFactory getSessionFactory() {
+
+    /**
+     *
+     * @return
+     */
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
      
-     public static void shutdown() {
+    /**
+     *
+     */
+    public static void shutdown() {
         // Close caches and connection pools
         getSessionFactory().close();
     }
