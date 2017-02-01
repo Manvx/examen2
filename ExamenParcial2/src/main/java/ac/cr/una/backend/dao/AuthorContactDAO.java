@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface AuthorContactDAO {
     public boolean deleteAll();
-    public AuthorContact save(AuthorContact authorCOntact);
+    public AuthorContact save(AuthorContact authorContact);
     public List<AuthorContact> findAll();
 }
