@@ -22,4 +22,9 @@ public class AuthorWebService {
     
     @Context
     private UriInfo context;
+
+    public AuthorWebService() {
+    }
+    
+    
 }
