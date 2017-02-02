@@ -7,11 +7,17 @@ package ac.cr.una.backend.model;
 
 import java.util.Calendar;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Alejandro
  */
+@Entity
+@Table(name = "author", catalog = "progra3_exa2", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "idBook")})
 public class Book {
     private int idBook;
     private Author author;

@@ -6,11 +6,16 @@
 package ac.cr.una.backend.model;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Alejandro
  */
+@Entity
+@Table(name = "author", catalog = "progra3_exa2")
 public class BookType {
     private int idType;
     private String type;
