@@ -95,7 +95,7 @@ public class BookWebService {
      * @return
      */
     @GET
-    @Path("/books")
+    @Path("/p")
     @Produces(MediaType.APPLICATION_JSON)
     public float getTotalPrice(){
         
