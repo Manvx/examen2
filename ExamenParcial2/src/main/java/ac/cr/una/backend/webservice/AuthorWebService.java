@@ -49,7 +49,7 @@ public class AuthorWebService {
      * @return
      */
     @GET
-    @Path("/authors")
+    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public List<AuthorContact> getAllAuthors() {
         List<AuthorContact> authorContactList = null;
@@ -84,7 +84,7 @@ public class AuthorWebService {
      * @return
      */
     @DELETE
-    @Path("/authors")
+    @Path("/")
     public boolean deleteAll(){
         boolean delete;
         authorDAO = new AuthorDAOImpl();
@@ -101,7 +101,7 @@ public class AuthorWebService {
      * @return 
      */
     @POST
-    @Path("/authors")
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public  AuthorContact createAuthor(AuthorContact authorContact){
