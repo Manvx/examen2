@@ -74,15 +74,13 @@ public class BookWebService {
     }
     
     @GET
-    @Path("/{{nombre}")
+    @Path("/books")
     @Produces(MediaType.APPLICATION_JSON)
     public float getTotalPrice(){
-        List<Book> bookList = null;
+        
         bookDAO = new BookDAOImpl();
         bookService = new BookServiceImpl(bookDAO);
-
-        bookList = bookService.findByAll();
-
-        return getTotalPrice();
+        
+        return bookService.totalPriceAll(); 
     }
 }
