@@ -6,11 +6,15 @@
 package ac.cr.una.backend.model;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author Alejandro
  */
+@Entity
+@Table(name = "authorContact", catalog = "progra3_exa2" )
 public class AuthorContact {
   private int idAuthorContact;
   private Author author;
