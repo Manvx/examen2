@@ -8,6 +8,8 @@ package ac.cr.una.backend.dao;
 import ac.cr.una.backend.model.AuthorContact;
 import ac.cr.una.backend.model.AuthorContact;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -23,19 +25,22 @@ public class AuthorContactDAOImpl implements AuthorContactDAO {
      * @return
      */
     @Override
-    public boolean deleteAll() {
-        List<AuthorContact> authorContactList = new ArrayList<>();
+  public boolean deleteAll() {
+         
         boolean isDeleted = false;
         
         session.beginTransaction();
-        authorContactList = session.createCriteria(AuthorContact.class).list(); 
-        int var = authorContactList.size();        
-        for(int m = 0; m < var; m++){
-            session.delete(authorContactList.get(m));
+          
+        Collection AuthorContact = session.createCriteria(AuthorContact.class).list();
+        
+        for(Iterator m = AuthorContact.iterator(); m.hasNext();){
+            session.beginTransaction();
+            AuthorContact book = (AuthorContact) m.next();
+            session.delete(book);
             session.getTransaction().commit();
         }
 
-         isDeleted = true;    
+        isDeleted = true;
         
 
         return isDeleted;

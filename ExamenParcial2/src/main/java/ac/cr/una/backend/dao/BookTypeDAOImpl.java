@@ -5,6 +5,8 @@ import ac.cr.una.backend.dao.BookTypeDAO;
 import ac.cr.una.backend.dao.HibernateUtil;
 import ac.cr.una.backend.model.BookType;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -28,15 +30,17 @@ public class BookTypeDAOImpl implements BookTypeDAO{
      */
     @Override
     public boolean deleteAll() {
-         List<BookType> bookTypeList = new ArrayList<>();
+         
         boolean isDeleted = false;
         
         session.beginTransaction();
-        bookTypeList = session.createCriteria(BookType.class).list();      
-        int var = bookTypeList.size();
+          
+        Collection BookType = session.createCriteria(BookType.class).list();
         
-        for(int m = 0; m < var; m++){
-            session.delete(bookTypeList.get(m));
+        for(Iterator m = BookType.iterator(); m.hasNext();){
+            session.beginTransaction();
+            BookType book = (BookType) m.next();
+            session.delete(book);
             session.getTransaction().commit();
         }
 
