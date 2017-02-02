@@ -8,13 +8,15 @@ package ac.cr.una.backend.model;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author Alejandro
  */
 @Entity
-@Table(name = "authorContact", catalog = "progra3_exa2" )
+@Table(name = "authorContact", catalog = "progra3_exa2", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "idAuthorContact")})
 public class AuthorContact {
   private int idAuthorContact;
   private Author author;
