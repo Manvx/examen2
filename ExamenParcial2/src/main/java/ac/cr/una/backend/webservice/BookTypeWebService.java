@@ -26,7 +26,7 @@ import javax.ws.rs.core.UriInfo;
  *
  * @author Alejandro
  */
-@Path("bookTypes")
+@Path("booktypes")
 public class BookTypeWebService {
     private BookTypeDAO bookTypeDAO;
     private BookTypeService bookTypeService;
@@ -46,7 +46,7 @@ public class BookTypeWebService {
      * @return
      */
     @GET
-    @Path("/{name}")
+    @Path("/drama")
     @Produces(MediaType.APPLICATION_JSON)
     public BookType getByName(@PathParam("name") String name){
         BookType bookType = null;
@@ -63,7 +63,7 @@ public class BookTypeWebService {
      * @return
      */
     @DELETE
-    @Path("/")
+    @Path("/booktypes")
     public boolean deleteAll(){
         boolean delete;
         bookTypeDAO = new BookTypeDAOImpl();
@@ -80,7 +80,7 @@ public class BookTypeWebService {
      * @return
      */
     @POST
-    @Path("/")
+    @Path("booktypes")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public  BookType createBook(BookType bookType){

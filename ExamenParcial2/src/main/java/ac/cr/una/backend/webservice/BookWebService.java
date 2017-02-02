@@ -44,7 +44,7 @@ public class BookWebService {
      * @return
      */
     @DELETE
-    @Path("/")
+    @Path("books")
     public boolean deleteAll(){
         boolean result;
         bookDAO = new BookDAOImpl();
@@ -61,7 +61,7 @@ public class BookWebService {
      * @return
      */
     @POST
-    @Path("/")
+    @Path("/books")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public  Book createBook(Book book){
@@ -95,7 +95,7 @@ public class BookWebService {
      * @return
      */
     @GET
-    @Path("/p")
+    @Path("/toalprice")
     @Produces(MediaType.APPLICATION_JSON)
     public float getTotalPrice(){
         
